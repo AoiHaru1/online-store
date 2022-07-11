@@ -1,0 +1,45 @@
+.header {
+  border-bottom: 2px solid rgba(74, 53, 53, 0.552);
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    font-family: "Roboto Slab", serif;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    h1 {
+      font-weight: 800 !important;
+      letter-spacing: 3px;
+    }
+  }
+
+  &__purchase {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Roboto Slab", serif;
+      font-weight: 600;
+      padding: 3px;
+      min-width: 26px;
+      height: 26px;
+      border-radius: 15px;
+      background-color: rgb(177, 174, 253);
+      font-size: 24px;
+      user-select: none;
+    }
+  }
+
+&__logo img ,&__purchase img {
+    max-width: 60px;
+  }
+}

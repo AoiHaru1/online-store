@@ -5,7 +5,7 @@ export default [
     color: 'Black',
     release: '2020',
     stock: 23,
-    image: 'Centek CT-1097.png',
+    image: 'CentekCT-1097.png',
     size: 'Small',
     popular: true,
   },
