@@ -1,0 +1,30 @@
+.footer {
+  border-top: 2px solid rgba(74, 53, 53, 0.552);
+  padding: 10px 0px;
+  &__logo {
+    width: 100px;
+    height: 40px;
+    background: url('../../assets/img/rs_school_js.svg') no-repeat;
+  }
+
+  &__description {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Roboto Slab", serif;
+    span {
+      font-size: 22px;
+    }
+    a {
+      img {
+        width: 40px;
+      }
+    }
+  }
+}
+
+.footer .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

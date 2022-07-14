@@ -7,6 +7,7 @@ import ItemList from '../itemList/itemList';
 import ValueFilter from '../valueFilter/valueFilter';
 import RangeFilter from '../rangeFilter/rangeFilter';
 import SearchFilter from '../searchFilter/searchFilter';
+import AppFooter from '../appFooter/appFooter';
 
 function App() {
   const [data, setData] = useState<Data[]>(itemData);
@@ -26,6 +27,7 @@ function App() {
           </section>
         </div>
       </main>
+      <AppFooter />
     </div>
   );
 }
