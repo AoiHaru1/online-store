@@ -4,10 +4,12 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  max-width: 500px;
+  max-width: 700px;
+  padding: 15px;
+  border: 1px solid rgba(74, 53, 53, 0.552);
 
   &__img {
-    max-width: 180px;
+    max-width: 200px;
   }
 
   &__description {

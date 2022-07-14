@@ -1,0 +1,66 @@
+.list {
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-start;
+ align-items: center;
+ gap: 8px;
+}
+
+.btn {
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(74, 53, 53, 0.552);
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-title {
+  white-space: nowrap
+}
+
+.manufacturer-list__title, .size-list__title, .color-list__title, .popular__title {
+  font-size: 20px;
+}
+
+.manufacturer-list__item:first-of-type {
+  background: url('../../assets/img/centek.png') no-repeat;
+  background-size: 70px;
+  background-color: #7bd3e5;
+  background-position: center;
+  width: 80px;
+}
+
+.manufacturer-list__item:nth-of-type(2) {
+  background: url('../../assets/img/brayer.png') no-repeat;
+  background-size: 70px;
+  background-color: #7bd3e5;
+  background-position: center;
+  width: 80px;
+}
+
+.manufacturer-list__item:nth-of-type(3) {
+  background: url('../../assets/img/first.png') no-repeat;
+  background-size: 70px;
+  background-color: #7bd3e5;
+  background-position: center;
+  width: 80px;
+}
+
+.color-list__item:first-of-type {
+  background-color: #ffffff;
+}
+
+.color-list__item:nth-of-type(2) {
+  background-color: #aeaeae;
+}
+
+.color-list__item:nth-of-type(3) {
+  background-color: #000000;
+}
+
+.color-list__item:last-of-type {
+  background-color: #ae7c4a;
+}
