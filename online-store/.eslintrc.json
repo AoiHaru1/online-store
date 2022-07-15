@@ -20,6 +20,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
+    "@typescript-eslint/no-non-null-assertion": "off",
     "prettier/prettier": [
       "error",
       {
@@ -27,7 +28,7 @@
         "tabWidth": 2,
         "semi": true,
         "singleQuote": true,
-        "printWidth": 120,
+        "printWidth": 110,
         "bracketSameLine": false
       }
     ]

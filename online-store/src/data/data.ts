@@ -1,4 +1,4 @@
-export default [
+const data: Data[] = [
   {
     name: 'Centek CT-1097',
     manufacturer: 'Centek',
@@ -90,3 +90,5 @@ export default [
     popular: false,
   },
 ];
+
+export default data;

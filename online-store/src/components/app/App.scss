@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.App {
+.app {
   margin: 0 auto;
 }
 
@@ -53,4 +53,8 @@
     gap: 50px;
     border: 2px solid rgba(74, 53, 53, 0.552);
   }
+}
+
+.active {
+  border: 3px solid red !important;
 }
