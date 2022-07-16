@@ -80,7 +80,7 @@ const data: Data[] = [
     popular: true,
   },
   {
-    name: 'FIRST FA-5450-1',
+    name: 'First FA-5450-1',
     manufacturer: 'First',
     color: 'Silver',
     release: '2015',

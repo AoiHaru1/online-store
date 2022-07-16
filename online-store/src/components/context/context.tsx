@@ -8,6 +8,7 @@ interface initialContextValues {
   handleChangeFavoriteFilter: () => void;
   handleChangeSizeFilter: (value: sizeFilter) => void;
   handleChangeNameFilter: (value: nameFilter) => void;
+  handleChangeSortFilter: (value: sortFilter) => void;
   data: Data[];
 }
 
@@ -17,6 +18,7 @@ const initFilter: valueFilterStorage & initialContextValues = {
   color: [],
   size: [],
   favorite: false,
+  sort: '',
   data: [],
 } as unknown as valueFilterStorage & initialContextValues;
 
@@ -32,6 +34,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
   const [favoriteFilter, setFavoriteFilter] = useState<favoriteFilter>(false);
   const [sizeFilter, setSizeFilter] = useState<sizeFilter[]>([]);
   const [nameFilter, setNameFilter] = useState('');
+  const [sortFilter, setSortFilter] = useState('');
   const [items, setItems] = useState(itemsData);
 
   const handleChangeColorFilter = (value: colorFilter) => {
@@ -54,8 +57,11 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
     setNameFilter(value);
   };
 
+  const handleChangeSortFilter = (value: sortFilter) => {
+    setSortFilter(value);
+  };
+
   useEffect(() => {
-    console.log(1);
     const newItems = itemsData
       .filter((item) => (colorFilter.length ? colorFilter.includes(item.color) : true))
       .filter((item) => (manufacturerFilter.length ? manufacturerFilter.includes(item.manufacturer) : true))
@@ -63,10 +69,30 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
       .filter((item) => (favoriteFilter ? item.popular : true))
       .filter((item) =>
         nameFilter.length ? item.name.toLowerCase().includes(nameFilter.toLowerCase()) : true
-      );
-
+      )
+      .sort((a: any, b: any): any => {
+        if (sortFilter === 'nameSort') {
+          return a.name.localeCompare(b.name);
+        }
+        if (sortFilter === 'reverseNameSort') {
+          return b.name.localeCompare(a.name);
+        }
+        if (sortFilter === 'releaseSort') {
+          return a.release - b.release;
+        }
+        if (sortFilter === 'reverseReleaseSort') {
+          return b.release - a.release;
+        }
+      });
     setItems(newItems);
-  }, [colorFilter.length, manufacturerFilter.length, sizeFilter.length, favoriteFilter, nameFilter]);
+  }, [
+    colorFilter.length,
+    manufacturerFilter.length,
+    sizeFilter.length,
+    favoriteFilter,
+    nameFilter,
+    sortFilter,
+  ]);
 
   useEffect(() => {
     const savedData = localStorage.getItem('filterSettings');
@@ -77,10 +103,11 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
       setSizeFilter(object.size);
       setFavoriteFilter(object.favorite);
       setNameFilter(object.name);
+      setSortFilter(object.sort);
     } else {
       localStorage.setItem(
         'filterSettings',
-        JSON.stringify({ name: '', manufacturer: [], color: [], size: [], favorite: false })
+        JSON.stringify({ name: '', manufacturer: [], color: [], size: [], favorite: false, sort: 'nameSort' })
       );
     }
   }, []);
@@ -94,6 +121,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         color: [...colorFilter],
         size: [...sizeFilter],
         favorite: favoriteFilter,
+        sort: sortFilter,
       })
     );
   });
@@ -107,11 +135,13 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         favorite: favoriteFilter,
         name: nameFilter,
         data: items,
+        sort: sortFilter,
         handleChangeColorFilter,
         handleChangeFavoriteFilter,
         handleChangeSizeFilter,
         handleChangeManufacturerFilter,
         handleChangeNameFilter,
+        handleChangeSortFilter,
       }}
     >
       {children}

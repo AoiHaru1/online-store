@@ -15,6 +15,7 @@ interface valueFilterStorage {
   color: colorFilter[];
   size: sizeFilter[];
   favorite: favoriteFilter;
+  sort: string;
 }
 
 type colorFilter = 'White' | 'Brown' | 'Black' | 'Silver';
@@ -22,3 +23,4 @@ type sizeFilter = 'Small' | 'Medium' | 'Large';
 type manufacturerFilter = 'Centek' | 'Brayer' | 'First';
 type favoriteFilter = boolean;
 type nameFilter = string;
+type sortFilter = string;
