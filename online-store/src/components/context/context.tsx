@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { JsxElement } from 'typescript';
 import { editFilterState } from '../helpers/editFilterState';
 import itemsData from '../../data/data';
 
@@ -8,11 +7,12 @@ interface initialContextValues {
   handleChangeManufacturerFilter: (value: manufacturerFilter) => void;
   handleChangeFavoriteFilter: () => void;
   handleChangeSizeFilter: (value: sizeFilter) => void;
+  handleChangeNameFilter: (value: nameFilter) => void;
   data: Data[];
 }
 
 const initFilter: valueFilterStorage & initialContextValues = {
-  name: [],
+  name: '',
   manufacturer: [],
   color: [],
   size: [],
@@ -50,14 +50,23 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
     setSizeFilter(editFilterState(sizeFilter, value));
   };
 
+  const handleChangeNameFilter = (value: nameFilter) => {
+    setNameFilter(value);
+  };
+
   useEffect(() => {
+    console.log(1);
     const newItems = itemsData
       .filter((item) => (colorFilter.length ? colorFilter.includes(item.color) : true))
       .filter((item) => (manufacturerFilter.length ? manufacturerFilter.includes(item.manufacturer) : true))
       .filter((item) => (sizeFilter.length ? sizeFilter.includes(item.size) : true))
-      .filter((item) => (favoriteFilter ? item.popular : true));
+      .filter((item) => (favoriteFilter ? item.popular : true))
+      .filter((item) =>
+        nameFilter.length ? item.name.toLowerCase().includes(nameFilter.toLowerCase()) : true
+      );
+
     setItems(newItems);
-  }, [colorFilter.length, manufacturerFilter.length, sizeFilter.length, favoriteFilter]);
+  }, [colorFilter.length, manufacturerFilter.length, sizeFilter.length, favoriteFilter, nameFilter]);
 
   useEffect(() => {
     const savedData = localStorage.getItem('filterSettings');
@@ -67,10 +76,11 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
       setManufacturerFilter(object.manufacturer);
       setSizeFilter(object.size);
       setFavoriteFilter(object.favorite);
+      setNameFilter(object.name);
     } else {
       localStorage.setItem(
         'filterSettings',
-        JSON.stringify({ name: [], manufacturer: [], color: [], size: [], favorite: false })
+        JSON.stringify({ name: '', manufacturer: [], color: [], size: [], favorite: false })
       );
     }
   }, []);
@@ -79,7 +89,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
     localStorage.setItem(
       'filterSettings',
       JSON.stringify({
-        name: [],
+        name: '',
         manufacturer: [...manufacturerFilter],
         color: [...colorFilter],
         size: [...sizeFilter],
@@ -101,6 +111,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         handleChangeFavoriteFilter,
         handleChangeSizeFilter,
         handleChangeManufacturerFilter,
+        handleChangeNameFilter,
       }}
     >
       {children}

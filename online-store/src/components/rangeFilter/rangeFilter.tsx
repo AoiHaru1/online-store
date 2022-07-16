@@ -3,6 +3,7 @@ import './rangeFilter.scss';
 
 import Nouislider from 'nouislider-react';
 import 'nouislider/distribute/nouislider.css';
+import { useFilterContext } from '../context/context';
 
 const RangeFilter = () => {
   return (
