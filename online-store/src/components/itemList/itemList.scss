@@ -1,10 +1,10 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .card {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  max-width: 700px;
+  flex-basis: 368px;
   padding: 15px;
   border: 1px solid rgba(74, 53, 53, 0.552);
 
@@ -15,6 +15,20 @@
   &__description {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    font-family: "Roboto Slab", serif;
+    font-size: 15px;
+    gap: 30px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  &__buttons {
+    display: flex;
+    font-size: 19px;
+    gap: 30px;
   }
 }

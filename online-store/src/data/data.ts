@@ -89,6 +89,36 @@ const data: Data[] = [
     size: 'Small',
     popular: false,
   },
+  {
+    name: 'Kelli KL-1445',
+    manufacturer: 'Kelli',
+    color: 'White',
+    release: '2001',
+    stock: 74,
+    image: 'KelliKL-1445.png',
+    size: 'Medium',
+    popular: true,
+  },
+  {
+    name: 'Kelli KL-1394',
+    manufacturer: 'Kelli',
+    color: 'Brown',
+    release: '2013',
+    stock: 29,
+    image: 'KelliKL-1394.png',
+    size: 'Small',
+    popular: false,
+  },
+  {
+    name: 'Kelli KL-1444',
+    manufacturer: 'Kelli',
+    color: 'Brown',
+    release: '2021',
+    stock: 5,
+    image: 'KelliKL-1444.png',
+    size: 'Large',
+    popular: true,
+  },
 ];
 
 export default data;

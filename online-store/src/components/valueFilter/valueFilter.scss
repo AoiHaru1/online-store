@@ -1,9 +1,9 @@
 .list {
- display: flex;
- flex-direction: column;
- justify-content: flex-start;
- align-items: center;
- gap: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn {
@@ -18,15 +18,18 @@
 }
 
 .filter-title {
-  white-space: nowrap
+  white-space: nowrap;
 }
 
-.manufacturer-list__title, .size-list__title, .color-list__title, .popular__title {
+.manufacturer-list__title,
+.size-list__title,
+.color-list__title,
+.popular__title {
   font-size: 20px;
 }
 
 .manufacturer-list__item:first-of-type {
-  background: url('../../assets/img/centek.png') no-repeat;
+  background: url("../../assets/img/centek.png") no-repeat;
   background-size: 70px;
   background-color: #7bd3e5;
   background-position: center;
@@ -34,7 +37,7 @@
 }
 
 .manufacturer-list__item:nth-of-type(2) {
-  background: url('../../assets/img/brayer.png') no-repeat;
+  background: url("../../assets/img/brayer.png") no-repeat;
   background-size: 70px;
   background-color: #7bd3e5;
   background-position: center;
@@ -42,7 +45,15 @@
 }
 
 .manufacturer-list__item:nth-of-type(3) {
-  background: url('../../assets/img/first.png') no-repeat;
+  background: url("../../assets/img/first.png") no-repeat;
+  background-size: 70px;
+  background-color: #7bd3e5;
+  background-position: center;
+  width: 80px;
+}
+
+.manufacturer-list__item:nth-of-type(4) {
+  background: url("../../assets/img/kelli.png") no-repeat;
   background-size: 70px;
   background-color: #7bd3e5;
   background-position: center;

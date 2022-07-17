@@ -5,7 +5,7 @@ import itemsData from '../../data/data';
 interface initialContextValues {
   handleChangeColorFilter: (value: colorFilter) => void;
   handleChangeManufacturerFilter: (value: manufacturerFilter) => void;
-  handleChangeFavoriteFilter: () => void;
+  handleChangeFavoriteFilter: (value?: string) => void;
   handleChangeSizeFilter: (value: sizeFilter) => void;
   handleChangeNameFilter: (value: nameFilter) => void;
   handleChangeSortFilter: (value: sortFilter) => void;
@@ -45,7 +45,11 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
     setManufacturerFilter(editFilterState(manufacturerFilter, value));
   };
 
-  const handleChangeFavoriteFilter = () => {
+  const handleChangeFavoriteFilter = (value?: string) => {
+    if (value) {
+      setFavoriteFilter(false);
+      return;
+    }
     setFavoriteFilter(!favoriteFilter);
   };
 

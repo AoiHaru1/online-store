@@ -13,7 +13,9 @@ import { useFilterContext } from '../context/context';
 
 function App() {
   const filterContext = useFilterContext();
+  const [basket, setBasket] = useState(0);
   const { data } = filterContext;
+
   return (
     <div className="app">
       <AppHeader />
@@ -25,7 +27,11 @@ function App() {
             <SearchFilter />
           </section>
           <section className="main__store">
-            <ItemList data={data} />
+            {data.length ? (
+              <ItemList data={data} />
+            ) : (
+              <div className="noitems-message">Извините, совпадений не обнаружено</div>
+            )}
           </section>
         </div>
       </main>

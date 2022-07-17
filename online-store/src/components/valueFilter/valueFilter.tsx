@@ -36,6 +36,10 @@ const ValueFilter: React.FC<Props> = (props) => {
             className={`manufacturer-list__item btn ${manufacturer.includes('First') && 'active'}`}
             onClick={() => handleChangeManufacturerFilter('First')}
           ></button>
+          <button
+            className={`manufacturer-list__item btn ${manufacturer.includes('Kelli') && 'active'}`}
+            onClick={() => handleChangeManufacturerFilter('Kelli')}
+          ></button>
         </div>
       </ul>
       <ul className="size-list list">

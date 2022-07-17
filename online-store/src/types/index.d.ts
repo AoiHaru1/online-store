@@ -18,9 +18,9 @@ interface valueFilterStorage {
   sort: string;
 }
 
-type colorFilter = 'White' | 'Brown' | 'Black' | 'Silver';
-type sizeFilter = 'Small' | 'Medium' | 'Large';
-type manufacturerFilter = 'Centek' | 'Brayer' | 'First';
+type colorFilter = 'White' | 'Brown' | 'Black' | 'Silver' | '';
+type sizeFilter = 'Small' | 'Medium' | 'Large' | '';
+type manufacturerFilter = 'Centek' | 'Brayer' | 'First' | 'Kelli' | '';
 type favoriteFilter = boolean;
 type nameFilter = string;
 type sortFilter = string;
