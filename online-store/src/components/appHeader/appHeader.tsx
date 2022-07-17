@@ -1,7 +1,11 @@
 import React from 'react';
 import './appHeader.scss';
 
-const appHeader: React.FC = () => {
+type Props = {
+  basketCount: number;
+};
+
+const appHeader: React.FC<Props> = ({ basketCount }) => {
   return (
     <header className="header">
       <div className="wrapper">
@@ -12,7 +16,7 @@ const appHeader: React.FC = () => {
           </div>
           <div className="header__purchase">
             <img src={require('../../assets/img/cart.png')} alt="logo" />
-            <span>0</span>
+            <span>{basketCount}</span>
           </div>
         </div>
       </div>

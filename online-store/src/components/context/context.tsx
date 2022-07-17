@@ -9,6 +9,8 @@ interface initialContextValues {
   handleChangeSizeFilter: (value: sizeFilter) => void;
   handleChangeNameFilter: (value: nameFilter) => void;
   handleChangeSortFilter: (value: sortFilter) => void;
+  handleChangeStockRangeFilter: (value: stockRangeFilter) => void;
+  handleChangeReleaseRangeFilter: (value: releaseRangeFilter) => void;
   data: Data[];
 }
 
@@ -19,6 +21,8 @@ const initFilter: valueFilterStorage & initialContextValues = {
   size: [],
   favorite: false,
   sort: '',
+  stockRange: ['0.00', '100.00'],
+  releaseRange: ['2000.00', '2022.00'],
   data: [],
 } as unknown as valueFilterStorage & initialContextValues;
 
@@ -35,6 +39,8 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
   const [sizeFilter, setSizeFilter] = useState<sizeFilter[]>([]);
   const [nameFilter, setNameFilter] = useState('');
   const [sortFilter, setSortFilter] = useState('');
+  const [stockRangeFilter, setStockRangeFilter] = useState<stockRangeFilter>(['0.00', '100.00']);
+  const [releaseRangeFilter, setReleaseRangeFilter] = useState<releaseRangeFilter>(['2000.00', '2022.00']);
   const [items, setItems] = useState(itemsData);
 
   const handleChangeColorFilter = (value: colorFilter) => {
@@ -63,6 +69,15 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
 
   const handleChangeSortFilter = (value: sortFilter) => {
     setSortFilter(value);
+    console.log(sortFilter);
+  };
+
+  const handleChangeStockRangeFilter = (value: stockRangeFilter) => {
+    setStockRangeFilter(value);
+  };
+
+  const handleChangeReleaseRangeFilter = (value: releaseRangeFilter) => {
+    setReleaseRangeFilter(value);
   };
 
   useEffect(() => {
@@ -87,7 +102,9 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         if (sortFilter === 'reverseReleaseSort') {
           return b.release - a.release;
         }
-      });
+      })
+      .filter((item) => item.stock >= +stockRangeFilter[0] && item.stock <= +stockRangeFilter[1])
+      .filter((item) => +item.release >= +releaseRangeFilter[0] && +item.release <= +releaseRangeFilter[1]);
     setItems(newItems);
   }, [
     colorFilter.length,
@@ -96,6 +113,8 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
     favoriteFilter,
     nameFilter,
     sortFilter,
+    stockRangeFilter,
+    releaseRangeFilter,
   ]);
 
   useEffect(() => {
@@ -108,10 +127,21 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
       setFavoriteFilter(object.favorite);
       setNameFilter(object.name);
       setSortFilter(object.sort);
+      setStockRangeFilter(object.stockRange);
+      setReleaseRangeFilter(object.releaseRange);
     } else {
       localStorage.setItem(
         'filterSettings',
-        JSON.stringify({ name: '', manufacturer: [], color: [], size: [], favorite: false, sort: 'nameSort' })
+        JSON.stringify({
+          name: '',
+          manufacturer: [],
+          color: [],
+          size: [],
+          favorite: false,
+          sort: 'nameSort',
+          stockRange: ['0.00', '100.00'],
+          releaseRange: ['2000.00', '2022.00'],
+        })
       );
     }
   }, []);
@@ -126,6 +156,8 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         size: [...sizeFilter],
         favorite: favoriteFilter,
         sort: sortFilter,
+        stockRange: [...stockRangeFilter],
+        releaseRange: [...releaseRangeFilter],
       })
     );
   });
@@ -140,12 +172,16 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         name: nameFilter,
         data: items,
         sort: sortFilter,
+        stockRange: stockRangeFilter,
+        releaseRange: releaseRangeFilter,
         handleChangeColorFilter,
         handleChangeFavoriteFilter,
         handleChangeSizeFilter,
         handleChangeManufacturerFilter,
         handleChangeNameFilter,
         handleChangeSortFilter,
+        handleChangeStockRangeFilter,
+        handleChangeReleaseRangeFilter,
       }}
     >
       {children}

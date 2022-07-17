@@ -16,6 +16,8 @@ interface valueFilterStorage {
   size: sizeFilter[];
   favorite: favoriteFilter;
   sort: string;
+  stockRange: string[];
+  releaseRange: string[];
 }
 
 type colorFilter = 'White' | 'Brown' | 'Black' | 'Silver' | '';
@@ -24,3 +26,5 @@ type manufacturerFilter = 'Centek' | 'Brayer' | 'First' | 'Kelli' | '';
 type favoriteFilter = boolean;
 type nameFilter = string;
 type sortFilter = string;
+type stockRangeFilter = string[];
+type releaseRangeFilter = string[];

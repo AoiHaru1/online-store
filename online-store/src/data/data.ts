@@ -54,7 +54,7 @@ const data: Data[] = [
     manufacturer: 'Brayer',
     color: 'Brown',
     release: '2011',
-    stock: 118,
+    stock: 67,
     image: 'BrayerBR1141.png',
     size: 'Large',
     popular: true,

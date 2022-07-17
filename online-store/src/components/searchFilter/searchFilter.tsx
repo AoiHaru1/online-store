@@ -13,15 +13,32 @@ const SearchFilter = () => {
     handleChangeFavoriteFilter,
     handleChangeSizeFilter,
     handleChangeManufacturerFilter,
+    handleChangeStockRangeFilter,
+    handleChangeReleaseRangeFilter,
   } = filterContext;
 
   const reset = () => {
+    localStorage.setItem(
+      'filterSettings',
+      JSON.stringify({
+        name: '',
+        manufacturer: [],
+        color: [],
+        size: [],
+        favorite: false,
+        sort: 'nameSort',
+        stockRange: [`${0 - Math.random()}`, `${100 + Math.random()}`],
+        releaseRange: [`${2000 - Math.random()}`, `${2022 + Math.random()}`],
+      })
+    );
     handleChangeSortFilter('nameSort');
     handleChangeNameFilter('');
     handleChangeColorFilter('');
     handleChangeSizeFilter('');
     handleChangeManufacturerFilter('');
     handleChangeFavoriteFilter('reset');
+    handleChangeStockRangeFilter(['0.00', '100.00']);
+    handleChangeReleaseRangeFilter(['2000.00', '2022.00']);
     (document.querySelector('.search') as HTMLInputElement)!.value = '';
   };
 

@@ -7,7 +7,6 @@ type Props = {
 
 const itemList: React.FC<Props> = ({ data }) => {
   const items = data.map((item) => {
-    const [counter, setCounter] = useState(0);
     return (
       <div className="card" key={item.name}>
         <img src={require(`../../assets/img/${item.image}`)} alt={item.name} className="card__img" />
@@ -21,10 +20,8 @@ const itemList: React.FC<Props> = ({ data }) => {
             <span className="card__size">Size: {item.size}</span>
           </div>
           <div className="card__buttons">
-            <button className="card__add" onClick={() => setCounter((counter) => counter + 1)}>
-              +
-            </button>
-            <span className="count">{counter}</span>
+            <button className="card__add">+</button>
+            <span className="count">0</span>
             <button className="card__remove">-</button>
           </div>
         </div>
