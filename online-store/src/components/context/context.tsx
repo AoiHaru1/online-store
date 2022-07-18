@@ -40,7 +40,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
   const [favoriteFilter, setFavoriteFilter] = useState<favoriteFilter>(false);
   const [sizeFilter, setSizeFilter] = useState<sizeFilter[]>([]);
   const [nameFilter, setNameFilter] = useState('');
-  const [sortFilter, setSortFilter] = useState('');
+  const [sortFilter, setSortFilter] = useState('nameSort');
   const [stockRangeFilter, setStockRangeFilter] = useState<stockRangeFilter>(['0.00', '100.00']);
   const [releaseRangeFilter, setReleaseRangeFilter] = useState<releaseRangeFilter>(['2000.00', '2022.00']);
   const [basketItemsCount, setBasketItemsCount] = useState<basketItemsCount[]>([]);
