@@ -10,7 +10,10 @@ const RangeFilter = () => {
   const { handleChangeReleaseRangeFilter, releaseRange, handleChangeStockRangeFilter, stockRange } =
     filterContext;
   const savedData = localStorage.getItem('filterSettings');
-  const object = savedData !== null ? JSON.parse(savedData) : null;
+  const object =
+    savedData !== null
+      ? JSON.parse(savedData)
+      : { releaseRange: ['2000.00', '2022.00'], stockRange: ['0.00', '100.00'] };
 
   return (
     <div className="main__range-filters">
