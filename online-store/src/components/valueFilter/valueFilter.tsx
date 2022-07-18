@@ -69,19 +69,19 @@ const ValueFilter: React.FC<Props> = (props) => {
         <span className="color-list__title">Цвет: </span>
         <div className="content-wrapper">
           <button
-            className={`color-list__item btn ${color.includes('White') && 'active'}`}
+            className={`color-list__item btn ${color.includes('White') && 'color-active'}`}
             onClick={() => handleChangeColorFilter('White')}
           ></button>
           <button
-            className={`color-list__item btn ${color.includes('Silver') && 'active'}`}
+            className={`color-list__item btn ${color.includes('Silver') && 'color-active'}`}
             onClick={() => handleChangeColorFilter('Silver')}
           ></button>
           <button
-            className={`color-list__item btn ${color.includes('Black') && 'active'}`}
+            className={`color-list__item btn ${color.includes('Black') && 'color-active'}`}
             onClick={() => handleChangeColorFilter('Black')}
           ></button>
           <button
-            className={`color-list__item btn ${color.includes('Brown') && 'active'}`}
+            className={`color-list__item btn ${color.includes('Brown') && 'color-active'}`}
             onClick={() => handleChangeColorFilter('Brown')}
           ></button>
         </div>
@@ -89,7 +89,7 @@ const ValueFilter: React.FC<Props> = (props) => {
       <div className="popular list">
         <span className="popular__title">Популярный: </span>
         <button
-          className={`popular__btn btn ${favorite && 'active'}`}
+          className={`popular__btn btn ${favorite && 'popular-active'}`}
           onClick={() => handleChangeFavoriteFilter()}
         ></button>
       </div>

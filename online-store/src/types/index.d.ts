@@ -18,6 +18,7 @@ interface valueFilterStorage {
   sort: string;
   stockRange: string[];
   releaseRange: string[];
+  basketItems: string[];
 }
 
 type colorFilter = 'White' | 'Brown' | 'Black' | 'Silver' | '';
@@ -28,3 +29,4 @@ type nameFilter = string;
 type sortFilter = string;
 type stockRangeFilter = string[];
 type releaseRangeFilter = string[];
+type basketItemsCount = string;

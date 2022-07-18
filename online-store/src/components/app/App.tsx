@@ -13,12 +13,11 @@ import { useFilterContext } from '../context/context';
 
 function App() {
   const filterContext = useFilterContext();
-  const [basketCount, setBasketCount] = useState(0);
   const { data } = filterContext;
 
   return (
     <div className="app">
-      <AppHeader basketCount={basketCount} />
+      <AppHeader />
       <main className="main">
         <div className="wrapper">
           <section className="main__filters">

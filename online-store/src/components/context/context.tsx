@@ -11,6 +11,7 @@ interface initialContextValues {
   handleChangeSortFilter: (value: sortFilter) => void;
   handleChangeStockRangeFilter: (value: stockRangeFilter) => void;
   handleChangeReleaseRangeFilter: (value: releaseRangeFilter) => void;
+  handleChangeBasketItemsCount: (value: basketItemsCount) => void;
   data: Data[];
 }
 
@@ -23,6 +24,7 @@ const initFilter: valueFilterStorage & initialContextValues = {
   sort: '',
   stockRange: ['0.00', '100.00'],
   releaseRange: ['2000.00', '2022.00'],
+  basketItems: [],
   data: [],
 } as unknown as valueFilterStorage & initialContextValues;
 
@@ -41,6 +43,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
   const [sortFilter, setSortFilter] = useState('');
   const [stockRangeFilter, setStockRangeFilter] = useState<stockRangeFilter>(['0.00', '100.00']);
   const [releaseRangeFilter, setReleaseRangeFilter] = useState<releaseRangeFilter>(['2000.00', '2022.00']);
+  const [basketItemsCount, setBasketItemsCount] = useState<basketItemsCount[]>([]);
   const [items, setItems] = useState(itemsData);
 
   const handleChangeColorFilter = (value: colorFilter) => {
@@ -69,7 +72,6 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
 
   const handleChangeSortFilter = (value: sortFilter) => {
     setSortFilter(value);
-    console.log(sortFilter);
   };
 
   const handleChangeStockRangeFilter = (value: stockRangeFilter) => {
@@ -78,6 +80,13 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
 
   const handleChangeReleaseRangeFilter = (value: releaseRangeFilter) => {
     setReleaseRangeFilter(value);
+  };
+
+  const handleChangeBasketItemsCount = (value: basketItemsCount) => {
+    if (value !== '' && basketItemsCount.length === 20 && !basketItemsCount.includes(value)) {
+      return;
+    }
+    setBasketItemsCount(editFilterState(basketItemsCount, value));
   };
 
   useEffect(() => {
@@ -115,6 +124,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
     sortFilter,
     stockRangeFilter,
     releaseRangeFilter,
+    basketItemsCount.length,
   ]);
 
   useEffect(() => {
@@ -129,6 +139,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
       setSortFilter(object.sort);
       setStockRangeFilter(object.stockRange);
       setReleaseRangeFilter(object.releaseRange);
+      setBasketItemsCount(object.basketItems);
     } else {
       localStorage.setItem(
         'filterSettings',
@@ -141,6 +152,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
           sort: 'nameSort',
           stockRange: ['0.00', '100.00'],
           releaseRange: ['2000.00', '2022.00'],
+          basketItems: [],
         })
       );
     }
@@ -158,6 +170,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         sort: sortFilter,
         stockRange: [...stockRangeFilter],
         releaseRange: [...releaseRangeFilter],
+        basketItems: [...basketItemsCount],
       })
     );
   });
@@ -174,6 +187,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         sort: sortFilter,
         stockRange: stockRangeFilter,
         releaseRange: releaseRangeFilter,
+        basketItems: basketItemsCount,
         handleChangeColorFilter,
         handleChangeFavoriteFilter,
         handleChangeSizeFilter,
@@ -182,6 +196,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
         handleChangeSortFilter,
         handleChangeStockRangeFilter,
         handleChangeReleaseRangeFilter,
+        handleChangeBasketItemsCount,
       }}
     >
       {children}

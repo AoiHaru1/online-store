@@ -15,18 +15,13 @@ const SearchFilter = () => {
     handleChangeManufacturerFilter,
     handleChangeStockRangeFilter,
     handleChangeReleaseRangeFilter,
+    handleChangeBasketItemsCount,
   } = filterContext;
 
   const reset = () => {
     localStorage.setItem(
       'filterSettings',
       JSON.stringify({
-        name: '',
-        manufacturer: [],
-        color: [],
-        size: [],
-        favorite: false,
-        sort: 'nameSort',
         stockRange: [`${0 - Math.random()}`, `${100 + Math.random()}`],
         releaseRange: [`${2000 - Math.random()}`, `${2022 + Math.random()}`],
       })
@@ -41,6 +36,35 @@ const SearchFilter = () => {
     (document.querySelector('.search') as HTMLInputElement)!.value = '';
   };
 
+  const settingsReset = () => {
+    localStorage.setItem(
+      'filterSettings',
+      JSON.stringify({
+        name: '',
+        manufacturer: [],
+        color: [],
+        size: [],
+        favorite: false,
+        sort: 'nameSort',
+        stockRange: ['0.00', '100.00'],
+        releaseRange: ['2000.00', '2022.00'],
+        basketItems: [],
+      })
+    );
+    handleChangeNameFilter('');
+    handleChangeColorFilter('');
+    handleChangeSizeFilter('');
+    handleChangeManufacturerFilter('');
+    handleChangeFavoriteFilter('reset');
+    handleChangeStockRangeFilter(['0.00', '100.00']);
+    handleChangeReleaseRangeFilter(['2000.00', '2022.00']);
+    handleChangeSortFilter('nameSort');
+    handleChangeBasketItemsCount('');
+    setTimeout(() => {
+      window.location.reload();
+    }, 0);
+  };
+
   return (
     <div className="main__search-filters">
       <div className="search-input">
@@ -50,7 +74,17 @@ const SearchFilter = () => {
           className="search"
           placeholder="Наберите текст"
           onChange={(e) => handleChangeNameFilter(e.target.value)}
+          autoFocus
+          autoComplete="off"
         />
+        <button
+          className="clear"
+          onClick={() => (
+            ((document.querySelector('.search') as HTMLInputElement)!.value = ''), handleChangeNameFilter('')
+          )}
+        >
+          x
+        </button>
       </div>
       <div className="sort-option">
         <h3 className="filter-title">Сортировка</h3>
@@ -62,9 +96,14 @@ const SearchFilter = () => {
           <option value="reverseReleaseSort">По году, по убыванию</option>
         </select>
       </div>
-      <button className="reset-btn" onClick={reset}>
-        Сброс фильтров
-      </button>
+      <div className="buttons">
+        <button className="reset-btn" onClick={reset}>
+          Сброс фильтров
+        </button>
+        <button className="reset-btn" onClick={settingsReset}>
+          Сброс настроек
+        </button>
+      </div>
     </div>
   );
 };

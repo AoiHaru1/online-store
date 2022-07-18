@@ -1,11 +1,11 @@
 import React from 'react';
+import { useFilterContext } from '../context/context';
 import './appHeader.scss';
 
-type Props = {
-  basketCount: number;
-};
+const appHeader: React.FC = () => {
+  const filterContext = useFilterContext();
+  const { basketItems } = filterContext;
 
-const appHeader: React.FC<Props> = ({ basketCount }) => {
   return (
     <header className="header">
       <div className="wrapper">
@@ -16,7 +16,7 @@ const appHeader: React.FC<Props> = ({ basketCount }) => {
           </div>
           <div className="header__purchase">
             <img src={require('../../assets/img/cart.png')} alt="logo" />
-            <span>{basketCount}</span>
+            <span>{basketItems.length}</span>
           </div>
         </div>
       </div>

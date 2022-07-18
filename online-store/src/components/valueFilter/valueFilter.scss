@@ -16,6 +16,10 @@
   width: 35px;
   height: 35px;
   border: 1px solid rgba(74, 53, 53, 0.552);
+  position: relative;
+  &:hover {
+    border: 2px solid rgba(21, 20, 20, 0.552);
+  }
 }
 
 .content-wrapper {
@@ -43,7 +47,7 @@
 .manufacturer-list__item:first-of-type {
   background: url("../../assets/img/centek.png") no-repeat;
   background-size: 95px;
-  background-color: #7bd3e5;
+  background-color: #000000d5;
   background-position: center;
   width: 110px;
 }
@@ -51,7 +55,7 @@
 .manufacturer-list__item:nth-of-type(2) {
   background: url("../../assets/img/brayer.png") no-repeat;
   background-size: 95px;
-  background-color: #7bd3e5;
+  background-color: #000000d5;
   background-position: center;
   width: 110px;
 }
@@ -59,7 +63,7 @@
 .manufacturer-list__item:nth-of-type(3) {
   background: url("../../assets/img/first.png") no-repeat;
   background-size: 95px;
-  background-color: #7bd3e5;
+  background-color: #000000d5;
   background-position: center;
   width: 110px;
 }
@@ -67,7 +71,7 @@
 .manufacturer-list__item:nth-of-type(4) {
   background: url("../../assets/img/kelli.png") no-repeat;
   background-size: 95px;
-  background-color: #7bd3e5;
+  background-color: #000000d5;
   background-position: center;
   width: 110px;
 }

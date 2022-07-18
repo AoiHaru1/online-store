@@ -4,10 +4,24 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  flex-basis: 368px;
+  flex-basis: 366px;
   padding: 15px;
   border: 1px solid rgba(74, 53, 53, 0.552);
   cursor: pointer;
+  position: relative;
+  user-select: none;
+
+  &:hover::before {
+    content: "";
+    font-family: "Roboto Slab", serif;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 2px solid rgb(30, 30, 30);
+    right: -2px;
+    bottom: -2px;
+  }
 
   &__img {
     max-width: 200px;

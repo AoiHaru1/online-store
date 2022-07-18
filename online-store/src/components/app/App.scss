@@ -72,7 +72,38 @@
 }
 
 .active {
-  border: 3px solid red !important;
+  border: 2px solid rgb(255, 0, 0) !important;
+}
+
+.popular-active {
+  background-image: url("../../assets/img/check.png");
+  background-size: 35px;
+  background-position: center;
+}
+
+.color-active {
+  background-image: url("../../assets/img/check-1.png");
+  background-size: 35px;
+  background-position: center;
+}
+
+.basket-active {
+  position: relative;
+}
+
+.basket-active::after {
+  content: "В корзине";
+  font-family: "Roboto Slab", serif;
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  width: 30%;
+  height: 30px;
+  position: absolute;
+  background-color: brown;
+  left: 10px;
+  top: 10px;
+  z-index: 99;
 }
 
 .noitems-message {
@@ -80,4 +111,14 @@
   text-align: center;
   font-size: 32px;
   padding: 50px;
+}
+
+.warn::after {
+  content: "Извините, все слоты заполнены";
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: red;
+  font-family: "Roboto Slab", serif;
+  font-size: 16px;
 }
