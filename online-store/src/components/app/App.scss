@@ -24,6 +24,10 @@
     display: flex;
     justify-content: space-between;
     gap: 15px;
+    @media screen and (max-width: 1100px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &__value-filters {
@@ -33,6 +37,10 @@
     padding: 25px 35px;
     gap: 20px;
     border: 2px solid rgba(74, 53, 53, 0.552);
+    @media screen and (max-width: 1100px) {
+      width: 100%;
+      padding: 5px 7px;
+    }
   }
 
   &__range-filters {
@@ -43,6 +51,10 @@
     padding: 25px 35px;
     gap: 80px;
     border: 2px solid rgba(74, 53, 53, 0.552);
+
+    @media screen and (max-width: 400px) {
+      padding: 5px 7px;
+    }
   }
 
   &__search-filters {
@@ -52,6 +64,10 @@
     padding: 25px 35px;
     gap: 50px;
     border: 2px solid rgba(74, 53, 53, 0.552);
+    @media screen and (max-width: 1100px) {
+      width: 100%;
+      padding: 5px 7px;
+    }
   }
 }
 

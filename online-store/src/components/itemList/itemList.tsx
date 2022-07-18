@@ -19,11 +19,6 @@ const itemList: React.FC<Props> = ({ data }) => {
             <span className="card__manufacturer">Manufacturer: {item.manufacturer}</span>
             <span className="card__size">Size: {item.size}</span>
           </div>
-          <div className="card__buttons">
-            <button className="card__add">+</button>
-            <span className="count">0</span>
-            <button className="card__remove">-</button>
-          </div>
         </div>
       </div>
     );

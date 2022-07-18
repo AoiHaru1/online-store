@@ -7,9 +7,14 @@
   flex-basis: 368px;
   padding: 15px;
   border: 1px solid rgba(74, 53, 53, 0.552);
+  cursor: pointer;
 
   &__img {
     max-width: 200px;
+
+    @media screen and (max-width: 400px) {
+      max-width: 170px;
+    }
   }
 
   &__description {

@@ -4,6 +4,12 @@
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
+  @media screen and (max-width: 1100px) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }
 
 .btn {
@@ -14,7 +20,13 @@
 
 .content-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
+  max-width: 240px;
+  @media screen and (max-width: 1100px) {
+    max-width: 640px;
+  }
 }
 
 .filter-title {
@@ -30,34 +42,34 @@
 
 .manufacturer-list__item:first-of-type {
   background: url("../../assets/img/centek.png") no-repeat;
-  background-size: 70px;
+  background-size: 95px;
   background-color: #7bd3e5;
   background-position: center;
-  width: 80px;
+  width: 110px;
 }
 
 .manufacturer-list__item:nth-of-type(2) {
   background: url("../../assets/img/brayer.png") no-repeat;
-  background-size: 70px;
+  background-size: 95px;
   background-color: #7bd3e5;
   background-position: center;
-  width: 80px;
+  width: 110px;
 }
 
 .manufacturer-list__item:nth-of-type(3) {
   background: url("../../assets/img/first.png") no-repeat;
-  background-size: 70px;
+  background-size: 95px;
   background-color: #7bd3e5;
   background-position: center;
-  width: 80px;
+  width: 110px;
 }
 
 .manufacturer-list__item:nth-of-type(4) {
   background: url("../../assets/img/kelli.png") no-repeat;
-  background-size: 70px;
+  background-size: 95px;
   background-color: #7bd3e5;
   background-position: center;
-  width: 80px;
+  width: 110px;
 }
 
 .color-list__item:first-of-type {

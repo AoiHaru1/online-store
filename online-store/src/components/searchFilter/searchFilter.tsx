@@ -31,7 +31,6 @@ const SearchFilter = () => {
         releaseRange: [`${2000 - Math.random()}`, `${2022 + Math.random()}`],
       })
     );
-    handleChangeSortFilter('nameSort');
     handleChangeNameFilter('');
     handleChangeColorFilter('');
     handleChangeSizeFilter('');

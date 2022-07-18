@@ -16,6 +16,10 @@
     h1 {
       font-weight: 800 !important;
       letter-spacing: 3px;
+
+      @media screen and (max-width: 400px) {
+        display: none;
+      }
     }
   }
 
@@ -39,7 +43,8 @@
     }
   }
 
-&__logo img ,&__purchase img {
+  &__logo img,
+  &__purchase img {
     max-width: 60px;
   }
 }
