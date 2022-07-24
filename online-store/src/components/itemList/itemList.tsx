@@ -9,22 +9,24 @@ type Props = {
 const itemList: React.FC<Props> = ({ data }) => {
   const filterContext = useFilterContext();
   const { basketItems, handleChangeBasketItemsCount } = filterContext;
+
   const items = data.map((item) => {
-    const warnHandle = (e: any) => {
-      console.log(e.target);
+    const fullBasketWarn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      const target = e.target as HTMLButtonElement;
       if (basketItems.length === 20 && !basketItems.includes(item.name)) {
-        e.target!.classList.add('warn');
+        target.classList.add('warn');
         setTimeout(() => {
-          e.target!.classList.remove('warn');
+          target.classList.remove('warn');
         }, 1000);
       }
       handleChangeBasketItemsCount(item.name);
     };
+
     return (
       <div
         className={`card ${basketItems.includes(item.name) ? 'basket-active' : ''}`}
         key={item.name}
-        onClick={(e) => warnHandle(e)}
+        onClick={(e) => fullBasketWarn(e)}
       >
         <img src={require(`../../assets/img/${item.image}`)} alt={item.name} className="card__img" />
         <div className="card__description">

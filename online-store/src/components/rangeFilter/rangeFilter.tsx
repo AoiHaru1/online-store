@@ -7,8 +7,7 @@ import { useFilterContext } from '../context/context';
 
 const RangeFilter = () => {
   const filterContext = useFilterContext();
-  const { handleChangeReleaseRangeFilter, releaseRange, handleChangeStockRangeFilter, stockRange } =
-    filterContext;
+  const { handleChangeReleaseRangeFilter, handleChangeStockRangeFilter } = filterContext;
   const savedData = localStorage.getItem('filterSettings');
   const object =
     savedData !== null

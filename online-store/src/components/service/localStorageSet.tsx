@@ -1,5 +1,3 @@
-import React from 'react';
-
 const localStorageSet = () => {
   if (!localStorage.getItem('filterSettings')) {
     localStorage.setItem(

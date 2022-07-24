@@ -2,11 +2,7 @@ import React from 'react';
 import { useFilterContext } from '../context/context';
 import './valueFilter.scss';
 
-type Props = {
-  onValueFilterChange?: (key: string, value: string) => void;
-};
-
-const ValueFilter: React.FC<Props> = (props) => {
+const ValueFilter: React.FC = () => {
   const filterContext = useFilterContext();
   const {
     handleChangeColorFilter,
@@ -18,6 +14,7 @@ const ValueFilter: React.FC<Props> = (props) => {
     handleChangeSizeFilter,
     size,
   } = filterContext;
+
   return (
     <div className="main__value-filters">
       <h2 className="filter-title">Фильтры по значению</h2>

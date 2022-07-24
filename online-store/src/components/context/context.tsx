@@ -98,7 +98,7 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
       .filter((item) =>
         nameFilter.length ? item.name.toLowerCase().includes(nameFilter.toLowerCase()) : true
       )
-      .sort((a: any, b: any): any => {
+      .sort((a: Data, b: Data): number => {
         if (sortFilter === 'nameSort') {
           return a.name.localeCompare(b.name);
         }
@@ -106,11 +106,9 @@ const FilterProvider: React.FC<Props> = ({ children }) => {
           return b.name.localeCompare(a.name);
         }
         if (sortFilter === 'releaseSort') {
-          return a.release - b.release;
+          return +a.release - +b.release;
         }
-        if (sortFilter === 'reverseReleaseSort') {
-          return b.release - a.release;
-        }
+        return +b.release - +a.release;
       })
       .filter((item) => item.stock >= +stockRangeFilter[0] && item.stock <= +stockRangeFilter[1])
       .filter((item) => +item.release >= +releaseRangeFilter[0] && +item.release <= +releaseRangeFilter[1]);

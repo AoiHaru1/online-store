@@ -6,7 +6,6 @@ const SearchFilter = () => {
   const filterContext = useFilterContext();
   const {
     handleChangeNameFilter,
-    name,
     handleChangeSortFilter,
     sort,
     handleChangeColorFilter,
